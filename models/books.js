@@ -14,13 +14,10 @@ const updateFavoriteSchemas = Joi.object({
   favorite: Joi.boolean().required(),
 });
 
-const contactSchema = new Schema({
+const booksSchema = new Schema({
   name: {
     type: String,
     required: [true, "Set name for contact"],
-  },
-  email: {
-    type: String,
   },
   phone: {
     type: String,
@@ -41,8 +38,8 @@ const schemas = {
   updateFavoriteSchemas,
 };
 
-contactSchema.post("save", handleMongooseError);
+booksSchema.post("save", handleMongooseError);
 
-const Contact = model("contact", contactSchema);
+const Book = model("contact", booksSchema);
 
-module.exports = { schemas, Contact };
+module.exports = { schemas, Book };
